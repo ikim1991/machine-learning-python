@@ -103,8 +103,8 @@ We can calculate the accuracy of our model to be 89%.
 
 Using matplotlib we can visualize the results below. We can see that the logistic regression is a linear model from its decision boundary.
 
-![Training Set Results](./lr-training)
-![Test Set Results](./lr-test)
+![Training Set Results](./lr-training.png)
+![Test Set Results](./lr-test.png)
 
 ## K-Nearest-Neighbor Classification Model
 
@@ -131,8 +131,8 @@ We can calculate the accuracy of our model to be 93%.
 
 Using matplotlib we can visualize the results below. We can see that the k-nn is a non-linear model from its decision boundary.
 
-![Training Set Results](./knn-training)
-![Test Set Results](./knn-test)
+![Training Set Results](./knn-training.png)
+![Test Set Results](./knn-test.png)
 
 ## Support Vector Machine (SVM) Classification Model
 
@@ -165,8 +165,8 @@ We can calculate the accuracy of our model to be 93%.
 
 Using matplotlib we can visualize the results below. As we can see, the SMV is a non-linear model from its decision boundary. We can achieve a linear model if we were to use the linear kernel type for the SVM model.
 
-![Training Set Results](./svm-training)
-![Test Set Results](./svm-test)
+![Training Set Results](./svm-training.png)
+![Test Set Results](./svm-test.png)
 
 ## Decision Tree Classification Model
 
@@ -175,7 +175,7 @@ We previously explored a Decision Tree regression model to predict for real valu
 We fit and train the Decision Tree model using the DecisionTreeClassifier class from the scikit-learn tree library. We need to define the criterion as an argument for the model to use. The criterion function measures the quality of a split in the decision tree. We use the 'entropy' criterion as our optimizing function for information gain.
 
 ```Python
-# Fit and Predict Decision Tree Model from scikit learn
+# Fit and Predict Decision Tree Model from sci.pngkit learn
 from sklearn.tree import DecisionTreeClassifier
 classifier = DecisionTreeClassifier(criterion = 'entropy', random_state = 0)
 classifier.fit(X_train, y_train)
@@ -193,8 +193,8 @@ We can calculate the accuracy of our model to be 91%.
 
 Using matplotlib we can visualize the results below. We can see that the decision tree is a non-linear model from its decision boundary.
 
-![Training Set Results](./decision-tree-training)
-![Test Set Results](./decision-tree-test)
+![Training Set Results](./decision-tree-training.png)
+![Test Set Results](./decision-tree-test.png)
 
 ## Random Forest Classification Model
 
@@ -221,8 +221,8 @@ We can calculate the accuracy of our model to be 91%.
 
 Using matplotlib we can visualize the results below. We can see that the random forest model is a non-linear model from its decision boundary.
 
-![Training Set Results](./random-forest-training)
-![Test Set Results](./random-forest-test)
+![Training Set Results](./random-forest-training.png)
+![Test Set Results](./random-forest-test.png)
 
 ## Closing Thoughts
 

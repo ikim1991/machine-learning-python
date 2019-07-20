@@ -82,45 +82,24 @@ import statsmodels.formula.api as sm
 regressor_OLS = sm.OLS(endog=y, exog = X_opt).fit()
 ```
 
-Using the summary method, we can generate the following table below:
+Using the summary method, get the Adjusted R-squared value and the p-values.
 
 ```Python
 regressor_OLS.summary()
 ```
 
-OLS Regression Results                            
-==============================================================================
-Dep. Variable:                      y   R-squared:                       0.951
-Model:                            OLS   Adj. R-squared:                  0.945
-Method:                 Least Squares   F-statistic:                     169.9
-Date:                Fri, 28 Jun 2019   Prob (F-statistic):           1.34e-27
-Time:                        15:00:06   Log-Likelihood:                -525.38
-No. Observations:                  50   AIC:                             1063.
-Df Residuals:                      44   BIC:                             1074.
-Df Model:                           5                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const       5.013e+04   6884.820      7.281      0.000    3.62e+04     6.4e+04
-x1           198.7888   3371.007      0.059      0.953   -6595.030    6992.607
-x2           -41.8870   3256.039     -0.013      0.990   -6604.003    6520.229
-x3             0.8060      0.046     17.369      0.000       0.712       0.900
-x4            -0.0270      0.052     -0.517      0.608      -0.132       0.078
-x5             0.0270      0.017      1.574      0.123      -0.008       0.062
-==============================================================================
-Omnibus:                       14.782   Durbin-Watson:                   1.283
-Prob(Omnibus):                  0.001   Jarque-Bera (JB):               21.266
-Skew:                          -0.948   Prob(JB):                     2.41e-05
-Kurtosis:                       5.572   Cond. No.                     1.45e+06
-==============================================================================
+Adj. R-Squared = 0.945
+x1 p-value = 0.953
+x2 p-value = 0.990
+x3 p-value = 0.000
+x4 p-value = 0.608
+x5 p-value = 0.123
 
-Note the Adjusted R-Squared value and the column of p-values associated to each of the features from the table above.
 To summarize, the Adjusted R-Squared value is a measure of how well our model fits our data. It optimizes the model by minimizing the sum of squared errors and finding the "best fit" to our model. The closer the R-Squared value is to 1, the more accurate our model, at least theoretically. There is still the case of overfitting that we will not get into.
 The p-value testing is used to determine the statistical significance of the features used to build the model. As a rule of thumb we set a significance level of 0.05. If the p-value is greater than the significance level, the feature is not a significant one and we would remove it from our model.
 Using the Adjusted R-Squared and the p-value testing in a Backward Elimination, we find the best set of features that optimizes our models performance.
 
-For example, from the table above our model with a full set of features has an Adjusted R-Squared of 0.945 and the features have p-values of 0.953, 0.990, 0.000, 0.608, and 0.123, respectively. So using Backward Elimination we would remove the feature with the highest p-value or the least significant feature, x2. We would then refit our model and generate the new table below.
+Using Backward Elimination we would remove the feature with the highest p-value or our least significant feature, x2. We would then refit our model and generate a new model.
 
 ```Python
 X = np.append(np.ones((len(X), 1)), X, axis = 1)
@@ -129,34 +108,16 @@ regressor_OLS = sm.OLS(endog=y, exog = X_opt).fit()
 regressor_OLS.summary()
 ```
 
-OLS Regression Results                            
-==============================================================================
-Dep. Variable:                      y   R-squared:                       0.951
-Model:                            OLS   Adj. R-squared:                  0.946
-Method:                 Least Squares   F-statistic:                     217.2
-Date:                Tue, 02 Jul 2019   Prob (F-statistic):           8.49e-29
-Time:                        21:24:34   Log-Likelihood:                -525.38
-No. Observations:                  50   AIC:                             1061.
-Df Residuals:                      45   BIC:                             1070.
-Df Model:                           4                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-coef    std err          t      P>|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const       5.011e+04   6647.870      7.537      0.000    3.67e+04    6.35e+04
-x1           220.1585   2900.536      0.076      0.940   -5621.821    6062.138
-x2             0.8060      0.046     17.606      0.000       0.714       0.898
-x3            -0.0270      0.052     -0.523      0.604      -0.131       0.077
-x4             0.0270      0.017      1.592      0.118      -0.007       0.061
-==============================================================================
-Omnibus:                       14.758   Durbin-Watson:                   1.282
-Prob(Omnibus):                  0.001   Jarque-Bera (JB):               21.172
-Skew:                          -0.948   Prob(JB):                     2.53e-05
-Kurtosis:                       5.563   Cond. No.                     1.40e+06
-==============================================================================
+Now we get the following:
+
+Adj. R-Squared = 0.946
+x1 p-value = 0.940
+x3 p-value = 0.000
+x4 p-value = 0.604
+x5 p-value = 0.118
 
 After a single iteration of the Backward Elimination method, we see an improved Adjusted R-Squared value. We would keep repeating the Backward Elimination process above until,
-  1. The highest value of Adjusted R-Squared is reached
+  1. The highest value of Adjusted R-Squared is achieved
   2. The p-value of features are all within the significance level
 
 ## Polynomial Regression
