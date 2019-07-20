@@ -88,12 +88,12 @@ Using the summary method, get the Adjusted R-squared value and the p-values.
 regressor_OLS.summary()
 ```
 
-Adj. R-Squared = 0.945
-x1 p-value = 0.953
-x2 p-value = 0.990
-x3 p-value = 0.000
-x4 p-value = 0.608
-x5 p-value = 0.123
+- Adj. R-Squared = 0.945
+- x1 p-value = 0.953
+- x2 p-value = 0.990
+- x3 p-value = 0.000
+- x4 p-value = 0.608
+- x5 p-value = 0.123
 
 To summarize, the Adjusted R-Squared value is a measure of how well our model fits our data. It optimizes the model by minimizing the sum of squared errors and finding the "best fit" to our model. The closer the R-Squared value is to 1, the more accurate our model, at least theoretically. There is still the case of overfitting that we will not get into.
 The p-value testing is used to determine the statistical significance of the features used to build the model. As a rule of thumb we set a significance level of 0.05. If the p-value is greater than the significance level, the feature is not a significant one and we would remove it from our model.
@@ -110,11 +110,11 @@ regressor_OLS.summary()
 
 Now we get the following:
 
-Adj. R-Squared = 0.946
-x1 p-value = 0.940
-x3 p-value = 0.000
-x4 p-value = 0.604
-x5 p-value = 0.118
+- Adj. R-Squared = 0.946
+- x1 p-value = 0.940
+- x3 p-value = 0.000
+- x4 p-value = 0.604
+- x5 p-value = 0.118
 
 After a single iteration of the Backward Elimination method, we see an improved Adjusted R-Squared value. We would keep repeating the Backward Elimination process above until,
   1. The highest value of Adjusted R-Squared is achieved
