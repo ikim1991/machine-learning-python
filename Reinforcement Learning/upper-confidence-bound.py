@@ -54,6 +54,6 @@ for n in range(0,N):
 
 # Visualizing the results
 plt.hist(ads_selected)
-plt.title('Ads Selection Distribution')
-plt.xlabel('Ads Selected')
+plt.title('UCB Ad Selection Distribution')
+plt.xlabel('Ad Selected')
 plt.ylabel('Number of Times Selected')
